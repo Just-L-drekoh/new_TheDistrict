@@ -3,3 +3,19 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+home :
+    path : /
+    controller : App\Controller\CatalogueController::home
+
+categories :
+    path : /categories
+    controller : App\Controller\CatalogueController::categories
+
+plats :
+    path : /plats
+    controller : App\Controller\CatalogueController::plats
+
+plats_cat :
+    path : /plats/{libelle}
+    controller : App\Controller\CatalogueController::plats_cat

@@ -16,28 +16,19 @@ class CategorieRepository extends ServiceEntityRepository
         parent::__construct($registry, Categorie::class);
     }
 
-    //    /**
-    //     * @return Categorie[] Returns an array of Categorie objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('c')
-    //            ->andWhere('c.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('c.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    public function bestCategories(): array
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            'SELECT c
+                FROM App\Entity\Categorie c
+                JOIN App\Entity\Plat p WITH p.categorie = c
+                JOIN App\Entity\Detail d WITH d.plat = p
+                GROUP BY c.libelle
+                ORDER BY SUM(d.quantite) DESC'
+        );
+        $query->setMaxResults(3);
+        return $query->getResult();
 
-    //    public function findOneBySomeField($value): ?Categorie
-    //    {
-    //        return $this->createQueryBuilder('c')
-    //            ->andWhere('c.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    }
 }

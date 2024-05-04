@@ -1,20 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CatalogueController!{% endblock %}
+{% block title %}The District | Accueil{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <video  width="100%"  class="d-none d-md-flex" loop autoplay muted>
+        <source src="{{asset ('img/images_the_district/restaurant.mp4')}}" type="video/mp4">
+    </video>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
     <ul>
-        <li>Your controller at <code>/home/logan/Documents/DEV/new_TheDistrict/src/Controller/CatalogueController.php</code></li>
-        <li>Your template at <code>/home/logan/Documents/DEV/new_TheDistrict/templates/catalogue/index.html.twig</code></li>
+    {% for categorie in categories %}
+    <li>{{categorie.libelle}}</li>
+        <img class='card-img-top' src="{{asset('/img/images_the_district/category/' ~ categorie.image)}}" alt="{{ categorie.libelle }}">
+    {% endfor %}
+</ul>
+
+    <ul>
+        {% for plat in plats %}
+            <li>{{plat.libelle}}</li>
+            <img class='card-img-top' src="{{asset('/img/images_the_district/food/' ~ plat.image)}}" alt="{{ plat.libelle }}">
+        {% endfor %}
     </ul>
-</div>
 {% endblock %}

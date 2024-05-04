@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}The District | Plat{% endblock %}
+
+{% block body %}
+
+    <ul>
+        {% for plat in plats %}
+            <li>{{plat.libelle}}</li>
+            <img class='card-img-top' src="{{asset('/img/images_the_district/food/' ~ plat.image)}}" alt="{{ plat.libelle }}">
+        {% endfor %}
+    </ul>
+{% endblock %}

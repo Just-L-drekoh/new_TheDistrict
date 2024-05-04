@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}The District | Categorie{% endblock %}
+
+{% block body %}
+    <ul>
+        {% for categorie in categories %}
+            <li>{{categorie.libelle}}</li>
+            <img class='card-img-top' src="{{asset('/img/images_the_district/category/' ~ categorie.image)}}" alt="{{ categorie.libelle }}">
+        {% endfor %}
+    </ul>
+{% endblock %}

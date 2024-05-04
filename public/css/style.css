@@ -1,0 +1,21 @@
+.nav-link {
+    color: rgb(244, 242, 242);
+    font-weight: bolder;
+    font-size: 2.5vh;
+
+}
+
+
+ul {
+    align-items: center;
+}
+
+.bi-search {
+    color: beige;
+}
+
+
+.form-search {
+
+    opacity: 0.4;
+}
