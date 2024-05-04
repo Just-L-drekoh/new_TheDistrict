@@ -38,4 +38,21 @@ class CatalogueController extends AbstractController
 
         ]);
     }
+    public function plats_cat(Request $request,PlatRepository $platRepo,CategorieRepository $categorieRepo): Response
+    {
+        $libelle = $request->attributes->get('libelle');
+
+
+        $categorie = $categorieRepo->findOneBy(['libelle' => $libelle]);
+
+
+        $plats = $categorie->getPlat();
+
+        return $this->render('catalogue/plats_cat.html.twig', [
+            'controller_name' => 'CatalogueController',
+            'categorie' => $categorie,
+            'plats' => $plats,
+
+        ]);
+    }
 }

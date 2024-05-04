@@ -11,6 +11,7 @@
     {% for categorie in categories %}
     <li>{{categorie.libelle}}</li>
         <img class='card-img-top' src="{{asset('/img/images_the_district/category/' ~ categorie.image)}}" alt="{{ categorie.libelle }}">
+        <a href="{{ path('plats_cat', {'libelle': categorie.libelle}) }}" class="btn btn-link">Voir les plats -></a>
     {% endfor %}
 </ul>
 
