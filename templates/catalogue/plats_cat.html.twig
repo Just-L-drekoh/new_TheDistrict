@@ -6,7 +6,7 @@
         <h1>PLATS | {{ categorie.libelle }}</h1>
     </div>
 
-    <h3>Voici Tout Nos Plats</h3>
+    <h3>Voici Tout nos {{ categorie.libelle }}</h3>
 
     <section class="ctn_categories row mb-4 d-flex justify-content-around m-0 p-0">
         {% for plat in plats %}
@@ -16,7 +16,7 @@
                     <h2>{{ plat.libelle }}</h2>
                     <p>{{ plat.description }}</p>
                     <h5>{{ plat.prix }} €</h5>
-                    <a  class="btn btn-primary btn-link" href="{{ path ('plats_cat',{'libelle': plat.libelle}) }}">Ajouter au panier</a>
+                    <a  class="btn btn-primary btn-link" href="#">Ajouter au panier</a>
                 </div>
             </div>
         {% endfor %}
