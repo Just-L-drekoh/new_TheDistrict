@@ -1,10 +1,76 @@
+/*Body*/
+
+body{
+    background-color: black;
+}
+
+*{
+    margin: auto;
+    padding: auto;
+}
+
+.ctn_text{
+    background-image: url("/img/images_the_district/background.jpg");
+    padding: 1px;
+}
+
+/*-----------------------------------*/
+/*All*/
+
+.img-categories ,
+.img-plats{
+    max-height: 250px;
+    object-fit: cover;
+}
+
+.style_text {
+    text-align: center;
+    color: burlywood;
+}
+
+.style_text h2{
+    text-decoration: underline 3px;
+}
+
+.style_text p {
+    align-items: center;
+    color: burlywood;
+}
+h3{
+    color: burlywood;
+    text-decoration: underline 3px;
+    justify-content: center;
+    display: flex;
+}
+
+.ctn-title{
+    padding: 10%;
+    margin: auto;
+    text-align: center;
+    background-image: url("/img/images_the_district/bg2.jpg");
+}
+
+.ctn-title h1 {
+    color: burlywood;
+    text-decoration: underline 3px;
+}
+.card-body p{
+    color: white;
+}
+.card-body h5{
+    float: right;
+    color: aqua;
+}
+
+/*---------------------------------*/
+/*NavBar*/
+
 .nav-link {
     color: rgb(244, 242, 242);
     font-weight: bolder;
     font-size: 2.5vh;
 
 }
-
 
 ul {
     align-items: center;
@@ -19,3 +85,93 @@ ul {
 
     opacity: 0.4;
 }
+
+/*------------------------------------*/
+/*footer*/
+
+footer ul {
+     list-style: none;
+}
+
+.footer-link{
+    text-decoration: none;
+
+}
+
+footer a {
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+footer li{
+    margin-bottom: 23px;
+}
+
+/*-----------------------------------*/
+/*Container*/
+
+.container{
+    background-color: #343232;
+    margin-top: 2rem;
+}
+
+/*-----------------------------------*/
+/*Container home categories & plats*/
+
+.ctn_categories{
+    background-image: url("/img/images_the_district/bg3.jpeg");
+}
+
+.card{
+    background-color: #343232;
+    transition: transform 0.3s ease;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.card:hover{
+    transform: scale(1.1);
+}
+.card-body h2 {
+    display: flex;
+    justify-content: center;
+    color: burlywood;
+    text-decoration: underline 3px;
+}
+
+.btn-link {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+
+}
+
+
+.btn-link:hover {
+    color: black;
+    background-color: white;
+}
+
+.ctn_best_plats{
+    background-image: url("/img/images_the_district/fosyyyy.jpg");
+}
+
+/*-------------------------------------------------*/
+/*plats_cat*/
+
+.ctn_plats_cat{
+    padding: 10%;
+    margin: auto;
+    text-align: center;
+    background-color: dimgrey;
+}
+
+.ctn_plats_cat h1{
+    color: burlywood;
+    text-decoration: underline 3px;
+}
+

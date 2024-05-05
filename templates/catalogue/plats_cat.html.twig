@@ -1,15 +1,25 @@
 {% extends 'base.html.twig' %}
+{% block title %}The District | {{ categorie.libelle }}{% endblock %}
 
 {% block body %}
+    <div class="container-fluid ctn_plats_cat mb-2 ">
+        <h1>PLATS | {{ categorie.libelle }}</h1>
+    </div>
 
+    <h3>Voici Tout Nos Plats</h3>
 
-{%for plat in plats %}
-    {{ plat.libelle }}
-    {% endfor %}
-
-
-
-
-
+    <section class="ctn_categories row mb-4 d-flex justify-content-around m-0 p-0">
+        {% for plat in plats %}
+            <div class="card col-10 col-sm-6 col-md-3 p-0">
+                <img class="p-0 m-0 img-categories" src="{{ asset ('/img/images_the_district/food/' ~ plat.image) }}" alt="{{ plat.libelle }}">
+                <div class="card-body">
+                    <h2>{{ plat.libelle }}</h2>
+                    <p>{{ plat.description }}</p>
+                    <h5>{{ plat.prix }} €</h5>
+                    <a  class="btn btn-primary btn-link" href="{{ path ('plats_cat',{'libelle': plat.libelle}) }}">Ajouter au panier</a>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
 
 {% endblock %}
