@@ -174,4 +174,16 @@ footer li{
     color: burlywood;
     text-decoration: underline 3px;
 }
+/*-----------------------------------------------------------*/
+/*login & register*/
 
+label{
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.text p{
+    color: white;
+}
