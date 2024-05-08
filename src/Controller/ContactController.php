@@ -27,6 +27,7 @@ class ContactController extends AbstractController
             $em->flush();
 
             $mailer->sendMail($form->getData());
+            $mailer->sendEmailConfirmation($form->getData());
         }
 
         return $this->render('contact/index.html.twig', [
