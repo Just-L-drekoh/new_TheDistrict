@@ -1,24 +1,29 @@
 /*Body*/
 
-body{
+body {
     background-color: #1e1c1c;
 }
 
-*{
+* {
     margin: auto;
     padding: auto;
 }
 
-.ctn_text{
+.ctn_text {
     background-image: url("/img/images_the_district/background.jpg");
     padding: 1px;
 }
 
+/* ---------------------------------- */
+/* navbar */
+
+
+
 /*-----------------------------------*/
 /*All*/
 
-.img-categories ,
-.img-plats{
+.img-categories,
+.img-plats {
     max-height: 250px;
     object-fit: cover;
 }
@@ -28,7 +33,7 @@ body{
     color: burlywood;
 }
 
-.style_text h2{
+.style_text h2 {
     text-decoration: underline 3px;
 }
 
@@ -36,14 +41,15 @@ body{
     align-items: center;
     color: burlywood;
 }
-h3{
+
+h3 {
     color: burlywood;
     text-decoration: underline 3px;
     justify-content: center;
     display: flex;
 }
 
-.ctn-title{
+.ctn-title {
     padding: 10%;
     margin: auto;
     text-align: center;
@@ -54,10 +60,12 @@ h3{
     color: burlywood;
     text-decoration: underline 3px;
 }
-.card-body p{
+
+.card-body p {
     color: white;
 }
-.card-body h5{
+
+.card-body h5 {
     float: right;
     color: aqua;
 }
@@ -90,10 +98,10 @@ ul {
 /*footer*/
 
 footer ul {
-     list-style: none;
+    list-style: none;
 }
 
-.footer-link{
+.footer-link {
     text-decoration: none;
 
 }
@@ -104,14 +112,14 @@ footer a {
     justify-content: center;
 }
 
-footer li{
+footer li {
     margin-bottom: 23px;
 }
 
 /*-----------------------------------*/
 /*Container*/
 
-.container{
+.container {
     background-color: #343232;
     margin-top: 2rem;
 }
@@ -119,19 +127,21 @@ footer li{
 /*-----------------------------------*/
 /*Container home categories & plats*/
 
-.ctn_categories{
+.ctn_categories {
     background-image: url("/img/images_the_district/bg3.jpeg");
 }
 
-.card{
+.card {
     background-color: #343232;
     transition: transform 0.3s ease;
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
-.card:hover{
+
+.card:hover {
     transform: scale(1.1);
 }
+
 .card-body h2 {
     display: flex;
     justify-content: center;
@@ -156,34 +166,35 @@ footer li{
     background-color: white;
 }
 
-.ctn_best_plats{
+.ctn_best_plats {
     background-image: url("/img/images_the_district/fosyyyy.jpg");
 }
 
 /*-------------------------------------------------*/
 /*plats_cat*/
 
-.ctn_plats_cat{
+.ctn_plats_cat {
     padding: 10%;
     margin: auto;
     text-align: center;
     background-color: dimgrey;
 }
 
-.ctn_plats_cat h1{
+.ctn_plats_cat h1 {
     color: burlywood;
     text-decoration: underline 3px;
 }
+
 /*-----------------------------------------------------------*/
 /*login & register*/
 
-label{
+label {
     color: white;
     display: flex;
     justify-content: center;
     margin-top: 1rem;
 }
 
-.text p{
+.text p {
     color: white;
 }

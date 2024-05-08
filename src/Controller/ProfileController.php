@@ -11,8 +11,14 @@ class ProfileController extends AbstractController
 
     public function index(): Response
     {
-        return $this->render('profile/index.html.twig', [
-            'controller_name' => 'ProfileController',
+        return $this->render('profile/index.html.twig', []);
+    }
+
+    public function profileUser(): Response
+    {
+        $user = $this->getUser();
+        return $this->render('profile/profile.html.twig', [
+            'infos' => $user,
         ]);
     }
 }

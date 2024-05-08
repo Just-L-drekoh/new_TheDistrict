@@ -1,42 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}The District | Profile{% endblock %}
+{% block title %}The District | Profile
+{% endblock %}
 
 {% block body %}
-    <div class="container-fluid ctn_plats_cat mb-2 ">
-        <h1>Page Connexion | Inscription</h1>
-    </div>
+	<div class="container-fluid ctn_plats_cat mb-2 ">
+		<h1>Page Connexion | Inscription</h1>
+	</div>
 
-    <section class="d-flex justify-content-around">
-        {% if not app.user %}
-        <div class="card col-10 col-sm-6 col-md-3" >
-            <h4>Connexion</h4>
-            <div class="card-body">
-                <p>Pour ce connectez c'est par ici </p>
-                <a class="btn btn-link" href="{{ path ('login') }}">Clique ICI</a>
-            </div>
-        </div>
+	<section class="d-flex justify-content-around">
+		{% if not app.user %}
+			<div class="card col-10 col-sm-6 col-md-3">
+				<h4>Connexion</h4>
+				<div class="card-body">
+					<p>Pour ce connectez c'est par ici
+					</p>
+					<a class="btn btn-link" href="{{ path ('login') }}">Clique ICI</a>
+				</div>
+			</div>
 
-        <div class="card col-10 col-sm-6 col-md-3" >
-            <h4>Inscription</h4>
-            <div class="card-body">
-                <p>Pour s'Inscrire c'est par ici </p>
-                <a class="btn btn-link" href="{{ path ('register') }}">Clique ICI</a>
-            </div>
-        </div>
-        {% endif %}
-        {%  if app.user %}
-        <div class="card col-10 col-sm-6 col-md-3" >
-            <h4>Votre Profil</h4>
-            <div class="card-body">
-                <p>Voir vos Informations </p>
-                <a class="btn btn-primary btn-link " href="#">Clique ICI</a>
-            </div>
-        </div>
-       {% endif %}
-    </section>
+			<div class="card col-10 col-sm-6 col-md-3">
+				<h4>Inscription</h4>
+				<div class="card-body">
+					<p>Pour s'Inscrire c'est par ici
+					</p>
+					<a class="btn btn-link" href="{{ path ('register') }}">Clique ICI</a>
+				</div>
+			</div>
+		{% endif %}
+		{%  if app.user %}
+			<div class="card col-10 col-sm-6 col-md-3">
+				<h4>Votre Profil</h4>
+				<div class="card-body">
+					<p>Voir vos Informations
+					</p>
+					<a class="btn btn-primary btn-link " href="{{path ('profileUser')}}">Clique ICI</a>
+				</div>
+			</div>
+		{% endif %}
+	</section>
 
-    {%  if app.user %}
-    <a class="btn btn-primary btn-link" href="{{ path ('logout') }}">Deconnexion</a>
-    {% endif %}
+	{%  if app.user %}
+		<a class="btn btn-primary btn-link" href="{{ path ('logout') }}">Deconnexion</a>
+	{% endif %}
 {% endblock %}

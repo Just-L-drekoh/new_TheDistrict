@@ -24,6 +24,9 @@ profile :
     path : /Connexion_Inscription
     controller : App\Controller\ProfileController::index
 
+profileUser:
+    path: /mon-profil
+    controller: App\Controller\ProfileController::profileUser
 register :
     path : /inscription
     controller : App\Controller\RegistrationController::register
@@ -39,3 +42,7 @@ logout :
 contact :
     path: /contact
     controller : App\Controller\ContactController::contact
+
+listPanier :
+    path: /panier
+    controller: App\Controller\PanierController::listPanier
