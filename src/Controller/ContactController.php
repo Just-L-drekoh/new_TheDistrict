@@ -2,40 +2,36 @@
 
 namespace App\Controller;
 
-
-
-use App\Service\MailService;
+use App\Entity\Contact;
 use App\Form\ContactFormType;
+use App\Service\MailService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Doctrine\ORM\EntityManagerInterface;
+
 
 class ContactController extends AbstractController
 {
-
-    private $EntityManager;
-
-    public function __construct(EntityManagerInterface $entityManager)
+    public function contact(Request $request, EntityManagerInterface $em, MailService $mailer): Response
     {
-        $this->EntityManager = $entityManager;
-    }
+        $contact = new Contact();
+        $form = $this->createForm(ContactFormType::class, $contact);
+        $form->handleRequest($request);
 
-    public function contact(Request $request, MailService $ms): Response
-    {
-        $form = $this->createForm(ContactFormType::class);
+        $contact->setDate(new \DateTimeImmutable());
 
-        $ms->mailContact($request, $this->EntityManager);
+        $em->persist($contact);
+        $em->flush();
 
-
+        $mailer->sendMail($form->getData());
 
 
 
 
         return $this->render('contact/index.html.twig', [
-            'controller_name' => 'ContactController',
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 }
