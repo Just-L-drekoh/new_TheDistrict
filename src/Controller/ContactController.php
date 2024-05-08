@@ -20,18 +20,17 @@ class ContactController extends AbstractController
         $form = $this->createForm(ContactFormType::class, $contact);
         $form->handleRequest($request);
 
-        $contact->setDate(new \DateTimeImmutable());
+        if ($form->isSubmitted() && $form->isValid()) {
+            $contact->setDate(new \DateTimeImmutable());
 
-        $em->persist($contact);
-        $em->flush();
+            $em->persist($contact);
+            $em->flush();
 
-        $mailer->sendMail($form->getData());
-
-
-
+            $mailer->sendMail($form->getData());
+        }
 
         return $this->render('contact/index.html.twig', [
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 }
