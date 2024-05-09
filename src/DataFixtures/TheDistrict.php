@@ -16,23 +16,23 @@ class TheDistrict extends Fixture
     {
         include 'the_district.php';
 
-    foreach ($utilisateur as $user) {
-        $userDB = new Utilisateur();
-        $userDB
-            ->setEmail($user['email'])
-            ->setPassword($user['password'])
-            ->setNom($user['nom'])
-            ->setPrenom($user['prenom'])
-            ->setTelephone($user['telephone'])
-            ->setAdresse($user['adresse'])
-            ->setCp($user['cp'])
-            ->setVille($user['ville']);
+        foreach ($utilisateur as $user) {
+            $userDB = new Utilisateur();
+            $userDB
+                ->setEmail($user['email'])
+                ->setPassword($user['password'])
+                ->setNom($user['nom'])
+                ->setPrenom($user['prenom'])
+                ->setTelephone($user['telephone'])
+                ->setAdresse($user['adresse'])
+                ->setCp($user['cp'])
+                ->setVille($user['ville']);
 
-        $manager->persist($userDB);
-    }
-    $manager->flush();
+            $manager->persist($userDB);
+        }
+        $manager->flush();
 
-    $userRepo = $manager->getRepository(Utilisateur::class);
+        $userRepo = $manager->getRepository(Utilisateur::class);
 
         foreach ($commande as $comm) {
             $commandeDB = new Commande();
@@ -41,10 +41,10 @@ class TheDistrict extends Fixture
                 ->setDateCommande($dateCommande)
                 ->setTotal($comm['total'])
                 ->setEtat($comm['etat']);
-                $user = $userRepo->find($comm['utilisateur_id']);
+            $user = $userRepo->find($comm['utilisateur_id']);
             $commandeDB->setUtilisateur($user);
             $manager->persist($commandeDB);
-    }
+        }
         $manager->flush();
 
         foreach ($categorie as $categorie) {
@@ -87,7 +87,4 @@ class TheDistrict extends Fixture
         }
         $manager->flush();
     }
-
-
-
 }

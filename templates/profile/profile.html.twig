@@ -42,8 +42,40 @@
 		</div>
 	</div>
 
-	{% if app.user %}
-		<a href="{{ path('logout') }}" class="btn btn-link d-block justify-content-center" type="button">Se deconnecté</a>
-	{% endif %}
+	<div class="container">
+		<table class='table table-light table-hover mt-5'>
+			<thead>
+				<tr>
+					<th>Plat(s)</th>
+					<th>Prix(Unité)</th>
+					<th>quantité</th>
+					<th>total</th>
+				</tr>
+			</thead>
+			{% for plat in plats%}
+				<tbody>
+					<tr>
+						<td>{{plat.libelle}}</td>
+						<td>{{plat.prix}}</td>
+						{% for detail in details %}
+							<td>{{detail.quantite}}</td>
+							{% endfor%}
+							{% for commande in commandes %}
+								<td>{{commande.total}}</td>
+								{% endfor%}
 
-{% endblock %}
+							</tr>
+						</tr>
+					</tr>
+				</tbody>
+
+			</table>
+
+
+			{% endfor%}
+		</div>
+		{% if app.user %}
+			<a href="{{ path('logout') }}" class="btn btn-link d-block justify-content-center" type="button">Se deconnecté</a>
+		{% endif %}
+
+	{% endblock %}
