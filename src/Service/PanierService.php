@@ -2,17 +2,35 @@
 
 namespace App\Service;
 
-use Doctrine\ORM\EntityManagerInterface;
-use App\Entity\Plat;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 class PanierService
+
 {
-    public function __construct(private SessionInterface $session)
+
+    private $session;
+
+
+    public function __construct(SessionInterface $session)
+
     {
+
+        $this->session = $session;
     }
 
-    public function addProduit()
+    public function addProduit($id)
     {
+        $panier = $this->session->get('panier', []);
+
+        if (array_key_exists($id, $panier)) {
+            $panier[$id] += 1;
+        } else {
+            $panier[$id] = 1;
+        }
+
+        $this->session->set('panier', $panier);
+
+        return $panier;
     }
 }
