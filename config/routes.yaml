@@ -46,3 +46,7 @@ contact :
 listPanier :
     path: /panier
     controller: App\Controller\PanierController::listPanier
+
+addPanier :
+    path: /panier/ajout/{id}
+    controller : App\Controller\PanierController::addPanier

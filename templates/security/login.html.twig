@@ -1,55 +1,58 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Log in!
+{% endblock %}
 
 {% block body %}
 
-    <div class="container-fluid ctn_plats_cat mb-2 ">
-        <h1>CONNEXION</h1>
-    </div>
+	<div class="container-fluid ctn_plats_cat mb-2 ">
+		<h1>CONNEXION</h1>
+	</div>
 
-    {% if app.user %}
-        <a href="{{ path('app_profile') }}">voir profil</a>
-    {% endif %}
+	{% if app.user %}
+		<a href="{{ path('profile') }}">voir profil</a>
+	{% endif %}
 
-    <div class="container d-flex justify-content-around">
+	<div class="container d-flex justify-content-around">
 
-        <form method="post" class="col-10 col-md-3  mb-5">
-            {% if error %}
-                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
+		<form method="post" class="col-10 col-md-3  mb-5">
+			{% if error %}
+				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
 
-            {% if app.user %}
-                <div class="mb-3">
-                    <p> tu es connecté <h5>{{ app.user.userIdentifier }}</h5></p>,
-                </div>
-            {% endif %}
+			{% if app.user %}
+				<div class="mb-3">
+					<p>
+						tu es connecté
+						<h5>{{ app.user.userIdentifier }}</h5>
+					</p>,
+				</div>
+			{% endif %}
 
-            <h3 class="mb-3 font-weight-normal">Connectez-vous !!!</h3>
-            <div class="form-group mb-3">
-                <label for="inputEmail" class="label ">Email :</label>
-                <input type="email" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-            </div>
-            <div class="form-group mb-3">
-                <label for="inputPassword" class="label">Mot de passe :</label>
-                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-            </div>
+			<h3 class="mb-3 font-weight-normal">Connectez-vous !!!</h3>
+			<div class="form-group mb-3">
+				<label for="inputEmail" class="label ">Email :</label>
+				<input type="email" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+			</div>
+			<div class="form-group mb-3">
+				<label for="inputPassword" class="label">Mot de passe :</label>
+				<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+			</div>
 
-            <input type="hidden" name="_csrf_token"
-                   value="{{ csrf_token('authenticate') }}"
-            >
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-            <button class="btn btn-link mb-5" id="btn-form" type="submit">
-                Se Connecter
-            </button>
-        </form>
+			<button class="btn btn-link mb-5" id="btn-form" type="submit">
+				Se Connecter
+			</button>
+		</form>
 
-        <div class="text mt-5 mb-3">
-            <p>Pas encore inscript cest ici </p>
-            <a href="{{path ('register')}}" class="btn btn-link d-block justify-content-center">S'inscrire</a>
-        </div>
-    </div>
-    {% if app.user %}
-        <a href="{{ path('logout') }}">Se deconnecté</a>
-    {% endif %}
+		<div class="text mt-5 mb-3">
+			<p>Pas encore inscript cest ici
+			</p>
+			<a href="{{path ('register')}}" class="btn btn-link d-block justify-content-center">S'inscrire</a>
+		</div>
+	</div>
+	{% if app.user %}
+		<a href="{{ path('logout') }}">Se deconnecté</a>
+	{% endif %}
 {% endblock %}
