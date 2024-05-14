@@ -5,8 +5,26 @@
 
 {% block body %}
 	<div class="container-fluid ctn_plats_cat mb-2 ">
-		<h1>Voici votre Panier |{{user.prenom}}
-			{{user.Nom}}</h1>
+		<h1>Voici votre Panier |
+		{# {{user.prenom}} #}
+			{# {{user.Nom}}</h1> #}
 
-	</div>
-{% endblock %}
+		</div>
+		{{ dump(panier) }}
+		<ul>
+			{% for contenu in panier %}
+				<li>
+					HELLO
+				</li>
+				<ol>
+					{% for plat, quantity in contenu %}
+						<li>{{ plat.getLibelle() }}
+							{{ quantity }}</li>
+						{# <h2>{{plat.libelle}}</h2>
+																																<p>{{ quantity}}</p> #}
+					{% endfor %}
+				</ol>
+			{% endfor %}
+		</ul>
+
+	{% endblock %}

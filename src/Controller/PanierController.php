@@ -16,37 +16,16 @@ class PanierController extends AbstractController
 {
 
 
-    public function addPanier(Request $request, PanierService $panierService): Response
+    public function addPanier(Request $request, PlatRepository $plat, PanierService $panierService): Response
     {
         $user = $this->getUser();
 
         $id = $request->attributes->get('id');
+        $panier = $panierService->addProduit($id, $plat, $request);
 
+        //dd($panier);
 
-        // Si 'panier' n'existe pas, on le crée...
-        // $panier = $session->get('panier', array($id => 0));
-        // // Si un plat se trouve déjà dans le panier, on incrémente la quantité...
-        // if (array_key_exists($id, $panier)) {
-        //     $panier[$id] += 1;
-        //     // ... sinon, on affecte la quantité 1.
-        // } else {
-        //     $panier[$id] = 1;
-        // }
-
-        // $plats = $plat->find(['id' => $id]);
-
-        // $session->set('panier', $panier);
-        // dd($panier, $session);
-
-
-        $panier = $panierService->addProduit($id);
-
-
-        return $this->render('panier/index.html.twig', [
-            'user' => $user,
-            'pannier' => $panier,
-
-        ]);
+        return $this->redirectToRoute('listPanier');
     }
 
 
@@ -63,14 +42,16 @@ class PanierController extends AbstractController
 
 
     #[IsGranted("ROLE_USER")]
-    public function listPanier(Request $request, PlatRepository $plat, SessionInterface $session): Response
+    public function listPanier(Request $request, PlatRepository $platRepo, PanierService $panierService): Response
     {
 
         $user = $this->getUser();
 
-
+        $panier = $panierService->getPanier($platRepo, $request);
+        // dd($panier);
         return $this->render('panier/index.html.twig', [
-            'user' => $user,
+            //            'user' => $user,
+            'panier' => $panier,
 
         ]);
     }

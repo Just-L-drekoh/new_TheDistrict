@@ -2,7 +2,9 @@
 
 namespace App\Service;
 
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use App\Repository\PlatRepository;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 
 class PanierService
@@ -12,16 +14,19 @@ class PanierService
     private $session;
 
 
-    public function __construct(SessionInterface $session)
+    public function __construct(private RequestStack $requestStack)
 
     {
-
-        $this->session = $session;
     }
 
-    public function addProduit($id)
+    public function addProduit($id, PlatRepository $platRepo, Request $request)
     {
-        $panier = $this->session->get('panier', []);
+        $session = $this->requestStack->getSession();
+
+        $plat = $platRepo->find(['id' => $id]);
+
+
+        $panier = $session->get('panier', []);
 
         if (array_key_exists($id, $panier)) {
             $panier[$id] += 1;
@@ -29,8 +34,25 @@ class PanierService
             $panier[$id] = 1;
         }
 
-        $this->session->set('panier', $panier);
+        $session->set('panier', $panier);
 
         return $panier;
+    }
+
+    public function getPanier(PlatRepository $platRepo, Request $request)
+    {
+        $session = $this->requestStack->getSession();
+
+        $panier = $session->get('panier', []);
+
+        $contenu = array();
+
+        foreach ($panier as $id => $quantity) {
+            $plat = $platRepo->find(['id' => $id]);
+            $item = [$plat, $quantity];
+            array_push($contenu, $item);
+        }
+
+        return $contenu;
     }
 }
