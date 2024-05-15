@@ -6,25 +6,37 @@
 {% block body %}
 	<div class="container-fluid ctn_plats_cat mb-2 ">
 		<h1>Voici votre Panier |
-		{# {{user.prenom}} #}
-			{# {{user.Nom}}</h1> #}
+			{{user.prenom}}
+			{{user.Nom}}</h1>
 
+	</div>
+
+	<div class="container">
+		<h1>Votre Panier</h1>
+		{% if panier is empty %}
+			<p>Votre panier est vide.</p>
+		{% else %}
+			<section class="ctn-panier row d-flex justify-content-around m-0 p-0">
+				{% set prixTotal = 0 %}
+				{% for plat in panier %}
+					<div class="card col-10 col-sm-6 col-md-3 p-0 mx-1">
+						<img class="p-0 m-0 img-plats" src="{{ asset ('/img/images_the_district/food/' ~ plat.0.image) }}" alt="{{ plat.0.libelle }}">
+						<div class="card-body">
+							<h2>{{plat.0.libelle}}</h2>
+							<h5>{{ plat.0.prix * plat.1 }}€</h5>
+							<h6>
+								Quantité :{{plat.1}}</h6>
+						</div>
+					</div>
+					{% set prixTotal = prixTotal + (plat.0.prix * plat.1) %}
+				{% endfor %}
+
+			{% endif %}
+			<div class="prix mt-3">
+				<h4>Total:
+					{{ prixTotal }}€</h4>
+				<a href="{{path ('commande')}}" class="btn btn-primary btn-link">Commandez</a>
+			</div>
 		</div>
-		{{ dump(panier) }}
-		<ul>
-			{% for contenu in panier %}
-				<li>
-					HELLO
-				</li>
-				<ol>
-					{% for plat, quantity in contenu %}
-						<li>{{ plat.getLibelle() }}
-							{{ quantity }}</li>
-						{# <h2>{{plat.libelle}}</h2>
-																																<p>{{ quantity}}</p> #}
-					{% endfor %}
-				</ol>
-			{% endfor %}
-		</ul>
 
 	{% endblock %}

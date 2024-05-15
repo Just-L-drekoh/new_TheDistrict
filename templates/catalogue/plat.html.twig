@@ -28,7 +28,7 @@
 					<p>{{ plat.description }}</p>
 					<h5>{{ plat.prix }}
 						€</h5>
-					<a class="btn btn-primary btn-link" href="{{ path ('listPanier', {'libelle': plat.libelle}) }}">Ajouter au panier</a>
+					<a class="btn btn-primary btn-link" href="{{path ('addPanier',{'id': plat.id}) }}">Ajouter au panier</a>
 				</div>
 			</div>
 		{% endfor %}

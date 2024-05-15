@@ -31,16 +31,6 @@ class PanierController extends AbstractController
 
 
 
-
-
-
-
-
-
-
-
-
-
     #[IsGranted("ROLE_USER")]
     public function listPanier(Request $request, PlatRepository $platRepo, PanierService $panierService): Response
     {
@@ -48,9 +38,9 @@ class PanierController extends AbstractController
         $user = $this->getUser();
 
         $panier = $panierService->getPanier($platRepo, $request);
-        // dd($panier);
+
         return $this->render('panier/index.html.twig', [
-            //            'user' => $user,
+            'user' => $user,
             'panier' => $panier,
 
         ]);

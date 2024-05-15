@@ -50,3 +50,7 @@ listPanier :
 addPanier :
     path: /panier/ajout/{id}
     controller : App\Controller\PanierController::addPanier
+
+commande :
+    path : /commande
+    controller : App\Controller\CommandeController::commande

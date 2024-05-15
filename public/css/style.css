@@ -42,6 +42,13 @@ body {
     color: burlywood;
 }
 
+h1 {
+    color: burlywood;
+    text-decoration: underline 3px;
+    justify-content: center;
+    display: flex;
+}
+
 h3 {
     color: burlywood;
     text-decoration: underline 3px;
@@ -197,4 +204,26 @@ label {
 
 .text p {
     color: white;
+}
+
+/* -------------------------------------------------------------- */
+/* Panier */
+
+.card-body h6 {
+    color: blueviolet;
+}
+
+.prix {
+    justify-content: space-around;
+    display: flex;
+}
+
+.prix h4 {
+    border: burlywood 3px solid;
+    border-radius: 5%;
+    padding: 1%;
+    background-color: black;
+    color: white;
+    font-weight: bolder;
+
 }
