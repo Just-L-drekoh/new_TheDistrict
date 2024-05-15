@@ -36,6 +36,8 @@ class PanierService
         return $contenu;
     }
 
+
+
     public function addProduit($id, PlatRepository $platRepo, Request $request)
     {
         $session = $this->requestStack->getSession();

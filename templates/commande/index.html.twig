@@ -16,6 +16,7 @@
 						<th>Plat(s)</th>
 						<th>Quantité</th>
 						<th>Prix Unitaire</th>
+						<th>TTC</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -24,26 +25,47 @@
 
 							<td>{{plat.0.libelle}}</td>
 							<td>{{plat.1}}</td>
-							<td>{{plat.0.prix}}
-								€</td>
+							<td>{{plat.0.prix}}€</td>
+							<td>{{ plat.0.prix * plat.1 }}€</td>
 
 						</tr>
 					{% endfor %}
 				</tbody>
 			</table>
 		</div>
-		{% set prixTotal = 0 %}
-		{% for plat in panier %}
-			{% set prixTotal = prixTotal + (plat.0.prix * plat.1) %}
-		{% endfor %}
 
-		<div class="card">
-			<h4>Prix Total a payer :<h3>{{prixTotal}}
-					€</h3>
-			</h4>
-		</div>
+		<div class="mt-2 col-6">
+			<table class="table table-light ">
+				<thead>
+					<tr>
+						<th>Nom/Prenom</th>
+						<th>adresse de facturation/livraison</th>
+						<th>Email de facturation</th>
+					</tr>
+				</thead>
+				<tbody>
 
-		<a href="{{path ('listPanier')}}" class="btn btn-primary btn-link">Retour</a>
-		<a href="#" class="btn btn-primary btn-link">Payer</a>
+					<tr>
+						<td>{{user.nom}}{{user.prenom}}</td>
+						<td>{{user.adresse}},{{user.cp}},{{user.ville}}</td>
+						<td>{{user.email}}</td>
+					</tr>
+
+				</tbody>
+			</table>
+
+			{% set prixTotal = 0 %}
+			{% for plat in panier %}
+				{% set prixTotal = prixTotal + (plat.0.prix * plat.1) %}
+			{% endfor %}
+
+			<prix class="card">
+				<h4>Prix Total a payer :<h1>{{prixTotal}}€</h1>
+				</h4>
+			</prix>
+
+			<a href="{{path ('listPanier')}}" class="btn btn-primary btn-link">Retour</a>
+			<a href="#" class="btn btn-primary btn-link">Payer</a>
+		</tbody>
 	</section>
 {% endblock %}

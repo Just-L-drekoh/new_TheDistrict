@@ -56,11 +56,9 @@ class PanierController extends AbstractController
 
         $panier = $panierService->getPanier($platRepo, $request);
 
-
         return $this->render('panier/index.html.twig', [
             'user' => $user,
             'panier' => $panier,
-
 
         ]);
     }
