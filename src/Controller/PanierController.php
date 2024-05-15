@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
@@ -16,9 +15,10 @@ class PanierController extends AbstractController
 {
 
 
+
     public function addPanier(Request $request, PlatRepository $plat, PanierService $panierService): Response
     {
-        $user = $this->getUser();
+
 
         $id = $request->attributes->get('id');
         $panier = $panierService->addProduit($id, $plat, $request);
@@ -27,6 +27,23 @@ class PanierController extends AbstractController
 
         return $this->redirectToRoute('listPanier');
     }
+
+    public function removePanier(Request $request, PanierService $panierService): Response
+    {
+
+        $id = $request->attributes->get('id');
+
+        $panier = $panierService->removeProduit($id, $request);
+
+
+
+
+        return $this->redirectToRoute('listPanier');
+    }
+
+
+
+
 
 
 
@@ -39,9 +56,11 @@ class PanierController extends AbstractController
 
         $panier = $panierService->getPanier($platRepo, $request);
 
+
         return $this->render('panier/index.html.twig', [
             'user' => $user,
             'panier' => $panier,
+
 
         ]);
     }

@@ -6,7 +6,44 @@
 {% block body %}
 	<div class="container-fluid ctn_plats_cat mb-2 ">
 		<h1>Commande</h1>
-
 	</div>
+	<section class="container d-flex">
 
+		<div class="mt-2 col-4">
+			<table class="table table-light col-4">
+				<thead>
+					<tr>
+						<th>Plat(s)</th>
+						<th>Quantité</th>
+						<th>Prix Unitaire</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for plat in panier %}
+						<tr>
+
+							<td>{{plat.0.libelle}}</td>
+							<td>{{plat.1}}</td>
+							<td>{{plat.0.prix}}
+								€</td>
+
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		{% set prixTotal = 0 %}
+		{% for plat in panier %}
+			{% set prixTotal = prixTotal + (plat.0.prix * plat.1) %}
+		{% endfor %}
+
+		<div class="card">
+			<h4>Prix Total a payer :<h3>{{prixTotal}}
+					€</h3>
+			</h4>
+		</div>
+
+		<a href="{{path ('listPanier')}}" class="btn btn-primary btn-link">Retour</a>
+		<a href="#" class="btn btn-primary btn-link">Payer</a>
+	</section>
 {% endblock %}

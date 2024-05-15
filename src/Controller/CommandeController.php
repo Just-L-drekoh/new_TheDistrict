@@ -16,9 +16,14 @@ class CommandeController extends AbstractController
 
     public function commande(Request $request, PanierService $panierService, PlatRepository $platRepo): Response
     {
+        $user = $this->getUser();
+
         $panier = $panierService->getPanier($platRepo, $request);
 
-        dd($panier);
-        return $this->render('commande/index.html.twig', []);
+
+        return $this->render('commande/index.html.twig', [
+            'user' => $user,
+            'panier' => $panier,
+        ]);
     }
 }

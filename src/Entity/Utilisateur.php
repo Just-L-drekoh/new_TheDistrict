@@ -102,6 +102,14 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
 
+        if ($this->email === 'TheDistrict@example.com') {
+            $roles[] = 'ROLE_ADMIN';
+        }
+
+        if ($this->email === 'chef@example.com') {
+            $role[] = 'ROLE_CHEF';
+        }
+
         return array_unique($roles);
     }
 

@@ -11,10 +11,10 @@
 
 	</div>
 
-	<div class="container">
+	<div class="container panier mb-4">
 		<h1>Votre Panier</h1>
 		{% if panier is empty %}
-			<p>Votre panier est vide.</p>
+			<h3>Cet espace est un peu vide, veuillez le remplir dès maintenant !"</h3>
 		{% else %}
 			<section class="ctn-panier row d-flex justify-content-around m-0 p-0">
 				{% set prixTotal = 0 %}
@@ -26,17 +26,26 @@
 							<h5>{{ plat.0.prix * plat.1 }}€</h5>
 							<h6>
 								Quantité :{{plat.1}}</h6>
+							<a href="{{ path('addPanier', {'id': plat.0.id}) }}" class="btn btn-primary btn-link">Ajouter</a>
+							<a class="btn btn-primary btn-link" href="{{path ('removePanier',{'id': plat.0.id}) }}">Supprimer</a>
+
 						</div>
 					</div>
 					{% set prixTotal = prixTotal + (plat.0.prix * plat.1) %}
-				{% endfor %}
 
+				{% endfor %}
 			{% endif %}
+		</section>
+
+		{% if prixTotal is defined %}
+
 			<div class="prix mt-3">
 				<h4>Total:
 					{{ prixTotal }}€</h4>
+
 				<a href="{{path ('commande')}}" class="btn btn-primary btn-link">Commandez</a>
 			</div>
-		</div>
+		{% endif %}
+	</div>
 
-	{% endblock %}
+{% endblock %}

@@ -51,6 +51,10 @@ addPanier :
     path: /panier/ajout/{id}
     controller : App\Controller\PanierController::addPanier
 
+removePanier :
+    path : /panier/remove-produit/{id}
+    controller: App\Controller\PanierController::removePanier
+
 commande :
     path : /commande
     controller : App\Controller\CommandeController::commande

@@ -209,6 +209,12 @@ label {
 /* -------------------------------------------------------------- */
 /* Panier */
 
+.panier h3 {
+    color: white;
+    text-decoration: none;
+
+}
+
 .card-body h6 {
     color: blueviolet;
 }
