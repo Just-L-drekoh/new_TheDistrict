@@ -19,9 +19,10 @@ class PanierService
     {
     }
 
-    public function getPanier(PlatRepository $platRepo, Request $request)
+    public function getPanier(PlatRepository $platRepo)
     {
         $session = $this->requestStack->getSession();
+
 
         $panier = $session->get('panier', []);
 
@@ -38,11 +39,11 @@ class PanierService
 
 
 
-    public function addProduit($id, PlatRepository $platRepo, Request $request)
+    public function addProduit($id)
     {
         $session = $this->requestStack->getSession();
 
-        $plat = $platRepo->find(['id' => $id]);
+
 
 
         $panier = $session->get('panier', []);

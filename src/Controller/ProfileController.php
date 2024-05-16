@@ -37,7 +37,7 @@ class ProfileController extends AbstractController
             'infos' => $user,
             'commandes' => $commande,
             'details' => $details,
-            'plats' => $plats
+            'plats' => $plats ?? [],
         ]);
     }
 }

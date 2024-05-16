@@ -6,42 +6,44 @@
 {% endblock %}
 {% block body %}
 
-	<div class="container-fluid ctn_plats_cat mb-2 ">
-		<h1>Vos Informations :
-			{{infos.Prenom}}
-			{{infos.Nom}}</h1>
-	</div>
-	<div class='container'>
-		<div class='row mt-5'>
-			<div class='col-sm-8 offset-sm-2'>
-				<h1 class='justify-content-center d-flex'>Vos informations</h1>
-				<table class='table table-light table-hover mt-5'>
-					<thead>
-						<tr>
-							<th>Nom</th>
-							<th>Prénom</th>
-							<th>télephone</th>
-							<th>Adresse</th>
-							<th>Code Postal</th>
-							<th>Ville</th>
-						</tr>
-					</thead>
+<div class="container-fluid ctn_plats_cat mb-2 ">
+	<h1>Vos Informations :
+		{{infos.Prenom}}
+		{{infos.Nom}}</h1>
+</div>
 
-					<tbody>
-						<tr>
-							<td>{{infos.nom}}</td>
-							<td>{{infos.prenom}}</td>
-							<td>{{infos.telephone}}</td>
-							<td>{{infos.adresse}}</td>
-							<td>{{infos.cp}}</td>
-							<td>{{infos.ville}}</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+
+<div class='container'>
+	<div class='row mt-5'>
+		<div class='col-sm-8 offset-sm-2'>
+			<h1 class='justify-content-center d-flex'>Vos informations</h1>
+			<table class='table table-light table-hover mt-5'>
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>Prénom</th>
+						<th>télephone</th>
+						<th>Adresse</th>
+						<th>Code Postal</th>
+						<th>Ville</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td>{{infos.nom}}</td>
+						<td>{{infos.prenom}}</td>
+						<td>{{infos.telephone}}</td>
+						<td>{{infos.adresse}}</td>
+						<td>{{infos.cp}}</td>
+						<td>{{infos.ville}}</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
-
+</div>
+{% if plats is defined %}
 	<div class="container">
 		<table class='table table-light table-hover mt-5'>
 			<thead>
@@ -59,23 +61,18 @@
 						<td>{{plat.prix}}</td>
 						{% for detail in details %}
 							<td>{{detail.quantite}}</td>
-							{% endfor%}
-							{% for commande in commandes %}
-								<td>{{commande.total}}</td>
-								{% endfor%}
+						{% endfor %}
+						{% for commande in commandes %}
+							<td>{{commande.total}}</td>
+						{% endfor %}
 
-							</tr>
-						</tr>
 					</tr>
-				</tbody>
+				{% endfor %}
+			</tr>
+		</tbody>
 
-			</table>
+	</table>
 
 
-			{% endfor%}
-		</div>
-		{% if app.user %}
-			<a href="{{ path('logout') }}" class="btn btn-link d-block justify-content-center" type="button">Se deconnecté</a>
-		{% endif %}
-
-	{% endblock %}
+</div>{% endif %}{% if app.user %}
+<a href="{{ path('logout') }}" class="btn btn-link d-block justify-content-center" type="button">Se deconnecté</a>{% endif %}{% endblock %}
