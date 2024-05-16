@@ -39,16 +39,16 @@
 				<thead>
 					<tr>
 						<th>Nom/Prenom</th>
-						<th>adresse de facturation/livraison</th>
-						<th>Email de facturation</th>
+						<th>Email</th>
+						<th>Telephone</th>
 					</tr>
 				</thead>
 				<tbody>
 
 					<tr>
 						<td>{{user.nom}}{{user.prenom}}</td>
-						<td>{{user.adresse}},{{user.cp}},{{user.ville}}</td>
 						<td>{{user.email}}</td>
+						<td>{{user.telephone}}</td>
 					</tr>
 
 				</tbody>
@@ -58,14 +58,14 @@
 			{% for plat in panier %}
 				{% set prixTotal = prixTotal + (plat.0.prix * plat.1) %}
 			{% endfor %}
+			{{form(form)}}
+				<prix class="card">
+					<h4>Prix Total a payer :<h1>{{prixTotal}}€</h1>
+					</h4>
+				</prix>
 
-			<prix class="card">
-				<h4>Prix Total a payer :<h1>{{prixTotal}}€</h1>
-				</h4>
-			</prix>
-
-			<a href="{{path ('listPanier')}}" class="btn btn-primary btn-link">Retour</a>
-			<a href="#" class="btn btn-primary btn-link">Payer</a>
-		</tbody>
-	</section>
-{% endblock %}
+				<a href="{{path ('listPanier')}}" class="btn btn-primary btn-link">Retour</a>
+				<a href="#" class="btn btn-primary btn-link">Payer</a>
+			</tbody>
+		</section>
+	{% endblock %}

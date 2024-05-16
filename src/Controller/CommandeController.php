@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\CommandeFormType;
 use App\Service\PanierService;
 use App\Repository\PlatRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,10 +21,24 @@ class CommandeController extends AbstractController
 
         $panier = $panierService->getPanier($platRepo, $request);
 
+        $form = $this->createForm(CommandeFormType::class);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $formdata = $form->getData();
+
+
+            dd($formdata, $panier);
+        }
+
+
+
+
 
         return $this->render('commande/index.html.twig', [
             'user' => $user,
             'panier' => $panier,
+            'form' => $form->createView(),
         ]);
     }
 }
