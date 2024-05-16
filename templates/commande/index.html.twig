@@ -20,13 +20,13 @@
 					</tr>
 				</thead>
 				<tbody>
-					{% for plat in panier %}
+					{% for plat in panier.panier %}
 						<tr>
 
 							<td>{{plat.0.libelle}}</td>
 							<td>{{plat.1}}</td>
 							<td>{{plat.0.prix}}€</td>
-							<td>{{ plat.0.prix * plat.1 }}€</td>
+							<td>{{ plat.2 }}€</td>
 
 						</tr>
 					{% endfor %}
@@ -54,13 +54,13 @@
 				</tbody>
 			</table>
 
-			{% set prixTotal = 0 %}
-			{% for plat in panier %}
-				{% set prixTotal = prixTotal + (plat.0.prix * plat.1) %}
-			{% endfor %}
+			{# {% set prixTotal = 0 %}
+						{% for plat in panier %}
+							{% set prixTotal = prixTotal + (plat.0.prix * plat.1) %}
+						{% endfor %} #}
 			{{form(form)}}
 				<prix class="card">
-					<h4>Prix Total a payer :<h1>{{prixTotal}}€</h1>
+					<h4>Prix Total a payer :<h1>{{panier.total}}€</h1>
 					</h4>
 				</prix>
 

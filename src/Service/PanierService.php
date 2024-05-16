@@ -28,13 +28,18 @@ class PanierService
 
         $contenu = array();
 
+        $total = 0;
+
         foreach ($panier as $id => $quantity) {
             $plat = $platRepo->find(['id' => $id]);
-            $item = [$plat, $quantity];
+            $total_partiel = $plat->getPrix() * $quantity;
+            $total += $total_partiel;
+            $item = [$plat, $quantity, $total_partiel];
+
             array_push($contenu, $item);
         }
 
-        return $contenu;
+        return array("panier" => $contenu, "total" => $total);
     }
 
 

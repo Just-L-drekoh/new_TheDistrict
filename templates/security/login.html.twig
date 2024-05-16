@@ -47,12 +47,12 @@
 		</form>
 
 		<div class="text mt-5 mb-3">
-			<p>Pas encore inscript cest ici
+			<p>Pas encore inscrit ? c'est ici
 			</p>
 			<a href="{{path ('register')}}" class="btn btn-link d-block justify-content-center">S'inscrire</a>
 		</div>
 	</div>
 	{% if app.user %}
-		<a href="{{ path('logout') }}">Se deconnecté</a>
+		<a href="{{ path('logout') }}">Se deconnecter</a>
 	{% endif %}
 {% endblock %}
