@@ -66,19 +66,33 @@ class PanierService
     }
 
 
+
+    public function decreaseQuantity($id, Request $request)
+    {
+        $session = $this->requestStack->getSession();
+        $panier = $session->get('panier', []);
+
+        if (array_key_exists($id, $panier) && $panier[$id] > 1) {
+            $panier[$id] -= 1;
+        } else {
+            unset($panier[$id]);
+        }
+
+        $session->set('panier', $panier);
+
+        return $panier;
+    }
+
+
     public function removeProduit($id, Request $request)
     {
         $session = $this->requestStack->getSession();
-
         $panier = $session->get('panier', []);
 
         if (array_key_exists($id, $panier)) {
-            if ($panier[$id] > 1) {
-                $panier[$id] -= 1;
-            } else {
-                unset($panier[$id]);
-            }
+            unset($panier[$id]);
         }
+
         $session->set('panier', $panier);
 
         return $panier;

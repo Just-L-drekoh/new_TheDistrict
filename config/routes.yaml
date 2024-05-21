@@ -55,6 +55,11 @@ removePanier :
     path : /panier/remove-produit/{id}
     controller: App\Controller\PanierController::removePanier
 
+
+decreaseQuantity :
+    path : /panier/decreaseQuantity/{id}
+    controller : App\Controller\PanierController::decreaseQuantity
+
 commande :
     path : /commande
     controller : App\Controller\CommandeController::commande

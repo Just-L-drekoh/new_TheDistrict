@@ -21,7 +21,10 @@ class CommandeFormType extends AbstractType
             ->add('cp', TextType::class, [
                 'label' => 'Code Postal'
             ])
-            ->add('save', SubmitType::class);
+            ->add('Payer', SubmitType::class, [
+                'attr' => ['class' => 'btn btn-primary btn btn-link'],
+
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -55,9 +55,9 @@
 			</table>
 
 			{# {% set prixTotal = 0 %}
-						{% for plat in panier %}
-							{% set prixTotal = prixTotal + (plat.0.prix * plat.1) %}
-						{% endfor %} #}
+																		{% for plat in panier %}
+																			{% set prixTotal = prixTotal + (plat.0.prix * plat.1) %}
+																		{% endfor %} #}
 			{{form(form)}}
 				<prix class="card">
 					<h4>Prix Total a payer :<h1>{{panier.total}}€</h1>

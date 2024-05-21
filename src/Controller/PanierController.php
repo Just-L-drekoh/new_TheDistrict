@@ -23,7 +23,7 @@ class PanierController extends AbstractController
         $id = $request->attributes->get('id');
         $panier = $panierService->addProduit($id, $plat, $request);
 
-        //dd($panier);
+
 
         return $this->redirectToRoute('listPanier');
     }
@@ -42,6 +42,18 @@ class PanierController extends AbstractController
     }
 
 
+    public function decreaseQuantity(Request $request, PanierService $panierService): Response
+    {
+
+        $id = $request->attributes->get('id');
+
+        $panier = $panierService->decreaseQuantity($id, $request);
+
+
+
+
+        return $this->redirectToRoute('listPanier');
+    }
 
 
 

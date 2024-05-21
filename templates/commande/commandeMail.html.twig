@@ -1,0 +1,53 @@
+<h3>Commande du  client
+	{{user.nom}}{{user.prenom}}
+	:</h3>
+
+<h5>avec l'adresse de facturation :
+	{{user.adresse}}</h5>
+
+<h5>infos du client :telephone :
+	{{user.telephone}}
+	/
+									mail :
+	{{user.email}}</h5>
+
+<h1>Adresse de livraison :
+	{{formdata.adresse}}
+	-
+	{{formdata.cp}}
+	-
+	{{formdata.ville}}
+</h1>
+
+
+<h3>Avec comme commande :</h3>
+
+
+<div class="mt-2 col-4">
+	<table class="table table-light col-4">
+		<thead>
+			<tr>
+				<th>Plat(s)</th>
+				<th>Quantité</th>
+				<th>Prix Unitaire</th>
+				<th>TTC</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for plat in panier.panier %}
+				<tr>
+
+					<td>{{plat.0.libelle}}</td>
+					<td>{{plat.1}}</td>
+					<td>{{plat.0.prix}}€</td>
+					<td>{{ plat.2 }}€</td>
+
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+<h3>Le client a payé en paiement bancaire est a reglé
+	<h1>{{panier.total}}€</h1>
+</h3>

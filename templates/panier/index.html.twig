@@ -16,23 +16,26 @@
 		{% if panier.panier is empty %}
 			<h3>Cet espace est un peu vide, veuillez le remplir dès maintenant !"</h3>
 		{% else %}
-			<section
-				class="ctn-panier row d-flex justify-content-around m-0 p-0">
-				{# {% set prixTotal = 0 %} #}
+			<section class="ctn-panier row d-flex justify-content-around m-0 p-0">
+
 				{% for plat in panier.panier %}
 					<div class="card col-10 col-sm-6 col-md-3 p-0 mx-1">
 						<img class="p-0 m-0 img-plats" src="{{ asset ('/img/images_the_district/food/' ~ plat.0.image) }}" alt="{{ plat.0.libelle }}">
 						<div class="card-body">
 							<h2>{{plat.0.libelle}}</h2>
 							<h5>{{ plat.2 }}€</h5>
-							<h6>
-								Quantité :{{ plat.1}}</h6>
-							<a href="{{ path('addPanier', {'id': plat.0.id}) }}" class="btn btn-primary btn-link">Ajouter</a>
+
+
+							<a class="btn btn-primary btn-link" href="{{ path('decreaseQuantity', {'id': plat.0.id}) }}">-</a>
+							<h6>Quantité :
+								{{plat.1}}</h6>
+							<a class="btn btn-primary btn-link" href="{{ path('addPanier', {'id': plat.0.id}) }}">+</a>
 							<a class="btn btn-primary btn-link" href="{{path ('removePanier',{'id': plat.0.id}) }}">Supprimer</a>
+
 
 						</div>
 					</div>
-					{# {% set prixTotal = prixTotal + (plat.0.prix * plat.1) %} #}
+
 
 				{% endfor %}
 				{% if panier.total > 0 %}

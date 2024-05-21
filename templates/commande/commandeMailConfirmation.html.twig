@@ -1,0 +1,56 @@
+<h1>Bonjour
+	{{user.nom}}-{{user.prenom}}</h1>
+
+<h3>Nerci beacoup pour la commande sur notre site The Distict</h3>
+
+<h2>Voici le Récapitulatif de votre Commande // infos :</h2>
+
+<h5>Vos Infos :
+</h5>
+<p>Adresse de Facturation :
+	{{user.adresse}}--{{user.cp}}--{{user.ville}}</p>
+
+<p>Votre Numero de Contact :
+	{{user.telephone}}</p>
+
+
+<h5>Vos Infos concernant votre Commande :
+</h5>
+
+<p>Adresse de Livraison :
+	{{formdata.adresse}}--{{formdata.cp}}--{{formdata.ville}}</p>
+
+
+<h5>Plats Acheté(s)</h5>
+<div class="mt-2 col-4">
+	<table class="table table-light col-4">
+		<thead>
+			<tr>
+				<th>Plat(s)</th>
+				<th>Quantité</th>
+				<th>Prix Unitaire</th>
+				<th>TTC</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for plat in panier.panier %}
+				<tr>
+
+					<td>{{plat.0.libelle}}</td>
+					<td>{{plat.1}}</td>
+					<td>{{plat.0.prix}}€</td>
+					<td>{{ plat.2 }}€</td>
+
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+
+<h3>Vous Avez Payer en paiement bancaire :
+	<h1>{{panier.total}}€</h1>
+</h3>
+
+
+<h6>The District vous Remercie Pour cette Commande .Bonne Apetit .</h6>

@@ -37,4 +37,45 @@ class MailService
 
         $this->mailer->send($emailConfirmation);
     }
+
+
+    public function SendMailCommande($formdata, $user, $panier)
+    {
+
+
+
+
+        $email = (new TemplatedEmail())
+            ->from($user->getEmail())
+            ->to('TheDistrict@gmail.com')
+            ->subject("Commande d'un client")
+            ->htmlTemplate('commande/commandeMail.html.twig')
+            ->context([
+                'user' => $user,
+                'panier' => $panier,
+                'formdata' => $formdata,
+            ]);
+
+        $this->mailer->send($email);
+    }
+
+    public function SendMailCommandeConfirmation($formdata, $user, $panier)
+    {
+
+
+
+
+        $email = (new TemplatedEmail())
+            ->from('TheDistrict@gmail.com')
+            ->to($user->getEmail())
+            ->subject('Commande vien pris en compte')
+            ->htmlTemplate('commande/commandeMailConfirmation.html.twig')
+            ->context([
+                'user' => $user,
+                'panier' => $panier,
+                'formdata' => $formdata,
+            ]);
+
+        $this->mailer->send($email);
+    }
 }
