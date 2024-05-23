@@ -31,4 +31,12 @@ class PlatRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function findByQuery(string $query)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.libelle LIKE :query OR p.description LIKE :query')
+            ->setParameter('query', '%' . $query . '%')
+            ->getQuery()
+            ->getResult();
+    }
 }

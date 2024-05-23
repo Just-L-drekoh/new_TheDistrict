@@ -7,6 +7,27 @@
 	<video width="100%" class="d-none d-md-flex" loop autoplay muted>
 		<source src="{{asset ('img/images_the_district/restaurant.mp4')}}" type="video/mp4">
 	</video>
+
+
+	<div class="container result">
+		{% if  results is not empty %}
+			<h3>Resultats</h3>
+
+
+			{% for plat in results %}
+				<r class="card justify-content-center d-flex col 3">
+					<h4>{{ plat.libelle }}:</h4>
+					<img class="p-0 m-0 img-result" src="{{ asset ('/img/images_the_district/food/' ~ plat.image) }}">
+					<p>{{ plat.description }}</p>
+					<a class="btn btn-primary btn-link" href="{{path ('addPanier',{'id': plat.id}) }}">Ajouter au panier</a>
+
+				</r>
+			{% endfor %}
+
+		{% endif %}
+	</div>
+
+
 	<div class="ctn_text mb-2 mt-4 m-0 p-0">
 		<div
 			class="container">
@@ -31,6 +52,8 @@
 
 		</div>
 	</div>
+
+
 	<h3>Nos best-Sellers (Categories)</h3>
 	<section class="ctn_categories row mb-2 d-flex justify-content-around m-0 p-0">
 		{% for categorie in categories %}

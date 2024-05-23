@@ -38,7 +38,7 @@ body {
 }
 
 .style_text p {
-    align-items: center;
+
     color: burlywood;
 }
 
@@ -232,4 +232,28 @@ label {
     color: white;
     font-weight: bolder;
 
+}
+
+/* --------------------------------------------------------------------- */
+/* Result */
+
+.result {
+    margin: auto;
+    text-align: center;
+}
+
+.result h4 {
+    color: blanchedalmond;
+}
+
+.result p {
+    color: burlywood;
+
+}
+
+
+.img-result {
+    max-height: 200px;
+
+    object-fit: cover;
 }

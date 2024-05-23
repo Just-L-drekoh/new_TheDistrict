@@ -58,6 +58,7 @@ class CommandeController extends AbstractController
 
             $em->flush();
 
+            $panierService->clearPanier();
             return  $this->redirectToRoute('home');
         }
         return $this->render('commande/index.html.twig', [

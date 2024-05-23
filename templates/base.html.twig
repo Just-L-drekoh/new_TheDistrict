@@ -41,15 +41,17 @@
 							<a class="nav-link {{ app.current_route == 'contact' ?'active' : '' }}" href="{{path ('contact')}}">Contact</a>
 						</li>
 
-						<form class="d-flex w-25  " role="search">
 
-							<input class="form-search me-2 d-none d-lg-flex w-50  " type="search" placeholder="Recherche..." aria-label="Search" name="searchTerm">
-							<button class="btn  d-none d-lg-flex" type="submit">
+						{% if app.request.attributes.get('_route') == 'home' %}
+							{{ form_start(form, {'attr': {'class': 'd-flex w-25 form-search', 'role': 'search'}}) }}
+							{{ form_widget(form.query) }}
+							<button class="btn d-none d-lg-flex" type="submit">
 								<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewbox="0 0 16 16">
-									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/></svg>
+									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+								</svg>
 							</button>
-
-						</form>
+							{{ form_end(form) }}
+						{% endif %}
 						<li class="nav-item">
 							<a class="nav-link " href="{{path ('home')}}">
 								<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house" viewbox="0 0 16 16">
@@ -160,6 +162,5 @@
 
 		</footer>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
 	</body>
-</html>
+</html></body></html>

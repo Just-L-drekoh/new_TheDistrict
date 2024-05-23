@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\SearchFormType;
 use App\Repository\CategorieRepository;
 use App\Repository\PlatRepository;
 
@@ -12,11 +13,27 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class CatalogueController extends AbstractController
 {
-    public function home(CategorieRepository  $categorie,PlatRepository $plat ): Response
+    public function home(Request $request, CategorieRepository  $categorie, PlatRepository $platRepo): Response
     {
         $best_categorie = $categorie->bestCategories();
-        $best_plat = $plat->bestPlats();
+        $best_plat = $platRepo->bestPlats();
+        $form = $this->createForm(SearchFormType::class);
+
+        $form->handleRequest($request);
+
+        $results = [];
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $query = $data['query'];
+            $results = $platRepo->findByQuery($query);
+        }
+
+
+
         return $this->render('catalogue/index.html.twig', [
+            'form' => $form->createView(),
+            'results' => $results,
             'categories' => $best_categorie,
             'plats' => $best_plat,
         ]);
@@ -26,7 +43,7 @@ class CatalogueController extends AbstractController
     {
         $allcategories = $categorie->findAll();
         return $this->render('catalogue/categorie.html.twig', [
-            'categories'=> $allcategories
+            'categories' => $allcategories
         ]);
     }
 
@@ -38,7 +55,7 @@ class CatalogueController extends AbstractController
 
         ]);
     }
-    public function plats_cat(Request $request,PlatRepository $platRepo,CategorieRepository $categorieRepo): Response
+    public function plats_cat(Request $request, PlatRepository $platRepo, CategorieRepository $categorieRepo): Response
     {
         $libelle = $request->attributes->get('libelle');
 
@@ -49,7 +66,6 @@ class CatalogueController extends AbstractController
         $plats = $categorie->getPlat();
 
         return $this->render('catalogue/plats_cat.html.twig', [
-            'controller_name' => 'CatalogueController',
             'categorie' => $categorie,
             'plats' => $plats,
 

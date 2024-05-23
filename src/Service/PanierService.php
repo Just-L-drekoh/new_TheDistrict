@@ -97,4 +97,11 @@ class PanierService
 
         return $panier;
     }
+
+    public function clearPanier(): void
+    {
+
+        $session = $this->requestStack->getSession();
+        $session->remove('panier');
+    }
 }
