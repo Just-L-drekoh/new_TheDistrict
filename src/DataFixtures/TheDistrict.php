@@ -14,7 +14,7 @@ class TheDistrict extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        include 'the_district.php';
+        include 'districtbase.php';
 
         foreach ($utilisateur as $user) {
             $userDB = new Utilisateur();
