@@ -18,7 +18,7 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarNav">
 
-						<ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-around mx-auto col-md-6">
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-around mx-auto ">
 							<a href="{{path ('home')}}" class=" img-brand d-none d-md-flex  col-2">
 								<img src="{{asset ('img/images_the_district/the_district_brand/logo_transparent.png')}}" class=" img-brand d-none d-md-flex  col-10">
 							</a>
@@ -37,7 +37,7 @@
 							{% if app.request.attributes.get('_route') == 'home' %}
 								{{ form_start(form, {'attr': {'class': 'd-flex w-25 form-search', 'role': 'search'}}) }}
 								{{ form_widget(form.query) }}
-								<button class="btn d-none d-lg-flex" type="submit">
+								<button class="btn" type="submit">
 									<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewbox="0 0 16 16">
 										<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
 									</svg>
