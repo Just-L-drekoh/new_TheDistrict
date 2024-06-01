@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title>
 			{% block title %}Welcome!
 			{% endblock %}
@@ -13,16 +14,17 @@
 		<body>
 			<nav class="navbar navbar-expand-md m-0 p-0  bg-tertiary">
 				<div class="container-fluid">
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+					<button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<div class="collapse navbar-collapse" id="navbarNav">
 
-						<ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-around mx-auto ">
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-around mx-auto">
+
 							<a href="{{path ('home')}}" class=" img-brand d-none d-md-flex  col-2">
 								<img src="{{asset ('img/images_the_district/the_district_brand/logo_transparent.png')}}" class=" img-brand d-none d-md-flex  col-10">
 							</a>
-
 							<li class="nav-item">
 								<a class="nav-link {{ app.current_route == 'categories' ?  'active' : '' }}" href="{{path ('categories')}}">Categorie</a>
 							</li>

@@ -58,7 +58,7 @@ class TheDistrict extends Fixture
         );
 
 
-        /* `azerty`.`detail` */
+
         $detail = array(
             array('quantite' => 3, 'plat_id' => 1, 'commande_id' => 1),
             array('quantite' => 2, 'plat_id' => 2, 'commande_id' => 2),
@@ -74,7 +74,7 @@ class TheDistrict extends Fixture
             array('quantite' => 2, 'plat_id' => 13, 'commande_id' => 12),
         );
 
-        /* `azerty`.`commande` */
+
         $commande = array(
             array('id' => 1, 'date_commande' => '2024-03-04 08:30:00', 'total' => '36.00',  'etat' => 1, 'utilisateur_id' => 1),
             array('id' => 2, 'date_commande' => '2024-03-04 09:15:00', 'total' => '26.00',  'etat' => 3, 'utilisateur_id' => 2),
@@ -89,7 +89,7 @@ class TheDistrict extends Fixture
             array('id' => 11, 'date_commande' => '2024-03-04 19:30:00', 'total' => '24.00',  'etat' => 2, 'utilisateur_id' => 11),
             array('id' => 12, 'date_commande' => '2024-03-04 20:15:00', 'total' => '14.00',  'etat' => 0, 'utilisateur_id' => 12)
         );
-        /* `azerty`.`utilisateur` */
+
         $utilisateur = array(
             array('id' => 1, 'email' => 'alice@example.com', 'password' => '$2y$10$6am1aelazku8Ish9Uoqk4eGm9Wc/xv6GTl2xf19anc.emYa4JWcDq', 'nom' => 'Johnson', 'prenom' => 'Alice', 'telephone' => '7894561230', 'adresse' => '123 Main Street', 'cp' => '80000', 'ville' => 'Amiens'),
             array('id' => 2, 'email' => 'bob@example.com', 'password' => '$2y$10$6am1aelazku8Ish9Uoqk4eGm9Wc/xv6GTl2xf19anc.emYa4JWcDq', 'nom' => 'Smith', 'prenom' => 'Bob', 'telephone' => '741852630', 'adresse' => '456 Elm Street', 'cp' => '80000', 'ville' => 'Amiens'),
