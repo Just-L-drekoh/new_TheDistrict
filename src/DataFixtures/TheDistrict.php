@@ -14,10 +14,8 @@ class TheDistrict extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-<<<<<<< HEAD
-        // include base 
-        include 'districtbase.php';
-=======
+
+
 
         $categorie = array(
             array('libelle' => 'Pizza', 'image' => 'cat_pizza.jpg', 'active' => 'Yes'),
@@ -112,7 +110,7 @@ class TheDistrict extends Fixture
 
         );
 
->>>>>>> dev
+
 
         foreach ($utilisateur as $user) {
             $userDB = new Utilisateur();
