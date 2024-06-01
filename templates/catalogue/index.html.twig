@@ -48,7 +48,7 @@
 				</div>
 			</div>
 
-			<div id="description_restaurant" class="style_text"></div>
+			<div id="description_restaurant" class="style_text d-none d-md-flex"></div>
 
 		</div>
 	</div>
@@ -57,7 +57,7 @@
 	<h3>Nos best-Sellers (Categories)</h3>
 	<section class="ctn_categories row mb-2 d-flex justify-content-around m-0 p-0">
 		{% for categorie in categories %}
-			<div class="card col-10 col-sm-6 col-md-3 p-0">
+			<div class="card col-10 col-md-5 col-lg-3 p-0 mx-1">
 				<img class="p-0 m-0 img-categories" src="{{ asset ('/img/images_the_district/category/' ~ categorie.image) }}" alt="{{ categorie.libelle }}">
 				<div class="card-body">
 					<h2>{{ categorie.libelle }}</h2>
@@ -69,7 +69,7 @@
 	<h3>Nos best-Sellers (Plats)</h3>
 	<section class="ctn_best_plats row d-flex justify-content-around m-0 p-0">
 		{% for plat in plats %}
-			<div class="card col-3 p-0">
+			<div class="card col-10 col-md-5 col-lg-3 p-0 mx-1">
 				<img class="p-0 m-0 img-plats" src="{{ asset ('/img/images_the_district/food/' ~ plat.image) }}" alt="{{ plat.libelle }} ">
 				<div class="card-body">
 					<h2>{{ plat.libelle }}</h2>
