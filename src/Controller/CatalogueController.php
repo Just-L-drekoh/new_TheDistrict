@@ -71,4 +71,14 @@ class CatalogueController extends AbstractController
 
         ]);
     }
+
+    public function politique(): Response
+    {
+        return $this->render('catalogue/politique.html.twig');
+    }
+
+    public function mentions(): Response
+    {
+        return $this->render('catalogue/mentions.html.twig');
+    }
 }

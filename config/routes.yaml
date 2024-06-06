@@ -63,3 +63,11 @@ decreaseQuantity :
 commande :
     path : /commande
     controller : App\Controller\CommandeController::commande
+
+politique :
+    path : /politique-de-confidentialite
+    controller : App\Controller\CatalogueController::politique
+
+mentions :
+    path : /mentions Legales
+    controller : App\Controller\CatalogueController::mentions
