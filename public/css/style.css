@@ -264,3 +264,21 @@ label {
 
     object-fit: cover;
 }
+
+/* -------------------------------------------------------------------------- */
+/* Politique de confidentialité */
+
+.politique p {
+    color: white;
+    text-align: center;
+    font-size: 100%;
+}
+
+.mentions strong,
+li,
+h5,
+ul {
+    color: white;
+    text-align: center;
+    list-style: none;
+}
